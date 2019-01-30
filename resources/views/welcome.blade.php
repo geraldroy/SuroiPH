@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+@section('content')
+
 <?php
 $headers = array(
   "Promos",
@@ -115,3 +118,5 @@ $paragraphs = array(
     @endif
 </div>
 @endforeach
+
+@endsection

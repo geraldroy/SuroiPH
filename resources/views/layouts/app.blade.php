@@ -76,13 +76,15 @@
                 </div>
             </div>
         </nav>
+        <!--
         <div class="container-fluid h-50 my-4 d-flex flex-column">
             <div class="container my-auto">
-                <main class="py-4">
+                <main class="py-4">-->
                     @yield('content')
-                </main>
+                <!--</main>
             </div>
         </div>
+    -->
         <div class="bg-suroi-green suroi-footer text-center mt-auto">
            <div class="container px-auto py-auto">
               <div class="row">
