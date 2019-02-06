@@ -51,7 +51,7 @@ class PackageController extends Controller
         ]);
 
         Package::create($package);
-        return view('home')->with('success','Package has been created.');
+        return redirect()->route('home')->with('success','Package has been created.');
     }
 
     /**
@@ -63,7 +63,7 @@ class PackageController extends Controller
     public function show($id)
     {
         $package = Package::find($id);
-        return view('packages.show',compact('package','id'));
+        return view('packages.show', compact('package','id'));
     }
 
     /**
@@ -74,8 +74,9 @@ class PackageController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::check() && $id == Auth::id()) {
-            $package = Package::find($id);
+        $package = Package::find($id);
+        $agency = DB::table('agencies')->where('user_id', Auth::id())->first();
+        if (Auth::check() && $package->agency_id == $agency->id) {
             return view('packages.edit',compact('package','id'));
         }
         return view("welcome");
@@ -116,6 +117,9 @@ class PackageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $package = Package::find($id);
+        $package->delete();
+
+        return redirect('home')->with('success', 'Package has been deleted Successfully');
     }
 }

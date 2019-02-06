@@ -50,7 +50,7 @@ class AgencyController extends Controller
         ]);
 
         Agency::create($agency);
-        return view('home')->with('success','Agency Profile has been created.');
+        return redirect('home')->with('success','Agency Profile has been created.');
     }
 
     /**
