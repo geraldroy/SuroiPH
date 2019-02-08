@@ -55,7 +55,7 @@ class CustomerController extends Controller
         ]);
 
         Customer::create($customer);
-        return view('home')->with('success','Profile has been created.');
+        return redirect('home')->with('success','Your profile has been created.');
     }
 
     /**

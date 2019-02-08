@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use App\User;
 use App\Agency;
+use App\Customer;
 use App\Package;
+use App\Transaction;
 
 class HomeController extends Controller
 {
@@ -38,12 +41,22 @@ class HomeController extends Controller
                 if($agency == null) {   //create profile first
                     return redirect('agencies/create');
                 }
-                $agency = Agency::where('user_id', '=', $user->id)->first();
                 $packages = Package::where('agency_id', '=', $agency->id)->get();
                 return view('home', compact('user', 'packages'));
             }
-            //customer
-            return view('home', compact('user'));
+            else if($user->type == 2) { //customer
+                $customer = Customer::where('user_id', '=', $user->id)->first();
+                if($customer == null) {   //create profile first
+                    return redirect('customers/create');
+                }
+                $orders = DB::table('transactions')-> where('customer_id', '=', $customer->id)
+                    -> join('packages', 'transactions.package_id', '=', 'packages.id')
+                    -> join('agencies', 'packages.agency_id', '=', 'agencies.id')
+                    -> select('packages.name as package_name', 'agencies.name as agency_name', 'packages.price as package_price', 'status as status')
+                    -> get();
+
+                return view('home', compact('user','orders'));
+            }
         }
         return view('welcome');
     }

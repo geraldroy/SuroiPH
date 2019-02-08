@@ -221,7 +221,7 @@ $promocount = 9;
         <div class="col-lg-4">
             <div class="container my-auto p-4 card">
                 <span class="font-weight-bold"><span class="h2 font-weight-bold">P{{ $package->price }}</span> per person</span>
-                <button class="btn btn-primary btn-lg w-100">BOOK</button>
+                <a href="{{ route('packages.book', $package) }}" class="btn btn-primary btn-lg w-100">BOOK</a>
                 <div class="divider-heavy my-3"></div>
 
                 <div class="card">

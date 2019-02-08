@@ -16,8 +16,8 @@
 
                             <div class="col-md-6">
                                 <input id="type" type="radio" name="type" value="0" checked> Administrator<br>
-                                <input id="type" type="radio" name="type" value="1"> Traveller<br>
-                                <input id="type" type="radio" name="type" value="2"> Travel Agency
+                                <input id="type" type="radio" name="type" value="1"> Travel Agency<br>
+                                <input id="type" type="radio" name="type" value="2"> Customer
 
                                 @if ($errors->has('type'))
                                     <span class="invalid-feedback" role="alert">

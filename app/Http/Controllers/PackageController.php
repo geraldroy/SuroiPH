@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Package;
+use App\User;
 
 class PackageController extends Controller
 {
@@ -64,6 +65,20 @@ class PackageController extends Controller
     {
         $package = Package::find($id);
         return view('packages.show', compact('package','id'));
+    }
+
+    /**
+     * Book a package transaction
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function book($id)
+    {
+        $package = Package::find($id);
+        $user = User::find(Auth::id());
+        $customer = DB::table('customers')->where('user_id', $user->id)->first();
+        return view('transactions.create', compact('package', 'customer'));
     }
 
     /**

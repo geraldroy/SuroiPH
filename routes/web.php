@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/search', 'HomeController@search')->name('search');
-Route::resource('agencies', 'AgencyController');
-Route::resource('customers', 'CustomerController');
-Route::resource('packages', 'PackageController');
+Route::resources([
+    'agencies' => 'AgencyController',
+    'customers' => 'CustomerController',
+    'packages' => 'PackageController',
+    'transactions' => 'TransactionController'
+]);
+Route::get('packages/{package}/book', array('as' => 'packages.book', 'uses' => 'PackageController@book'));
