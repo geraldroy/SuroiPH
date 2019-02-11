@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="container h-100 pt-5 mt-5">
+<div class="container py-5 mt-5 site-content">
     <div class="row">
         <div class="col-9">
             <div style="border-bottom: 1px solid #B7B7B7; padding: 1.5em 0;">

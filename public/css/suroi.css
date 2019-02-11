@@ -326,7 +326,7 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 	position: relative;
 	bottom: 0;
 	width: 100%;
-
+	min-height: 25vh;
 }
 
 .suroi-footer .suroi-logo{
@@ -1310,6 +1310,10 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 
 .suroi-tag-not-selected:focus, .suroi-tag-selected:focus{
 	box-shadow: none;
+}
+
+.carousel-indicators .active{
+	background-color: transparent;
 }
 
 
