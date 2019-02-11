@@ -28,7 +28,7 @@ $paragraphs = array(
 
 <div class="cover-container d-flex h-100 p-3 mx-auto flex-column suroi-landing mt-auto text-center parallax">
   <main role="main" class="inner cover text-white mt-auto">
-    <div class="container">
+    <div class="container" style="margin-top: 55px">
       <h1 class="cover-heading shadow-text display-4">What's our next adventure?</h1>
       <form class="my-2 my-lg-0 d-inline-flex w-75" autocomplete="off" action="/search">
         <input class="form-control form-control-lg color-suroi-green text-center shadow-box" name="q" type="search" placeholder='Try "Batanes", or "paragliding"' aria-label="Search" value="" data-list="<%= @location_data_list %>">

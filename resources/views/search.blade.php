@@ -119,17 +119,17 @@
     <div class="container flex-item mb-auto flex-item suroi-tag-area-indicator">
         <form class="mx-auto d-flex" >
         <div class="suroi-tag-area">
-            <div class="container-fluid w-75 h-auto suroi-tag-selection mx-auto">
+            <div class="container-fluid w-75 h-auto suroi-tag-selection mx-auto d-flex flex-column">
                 @for ($i = 0; $i < 5; $i++)
-                <div class="suroi-tag-category-area">
+                <div class="suroi-tag-category-area my-auto">
                     <div class="row">
-                        <div class="col-2">
-                            <button class="btn suroi-tag">Category</button>
+                        <div class="col-2 d-flex">
+                            <button class="btn suroi-tag m-auto">Category</button>
                         </div>
                         <div class="col-10">
-                            <div class="suroi-tag-cat-tags d-flex flex-wrap">
+                            <div class="suroi-tag-cat-tags d-flex flex-wrap ">
                                 @for ($j = 1; $j < 11; $j++)
-                                <button class="btn suroi-tag">Tag</button>
+                                <button class="btn suroi-tag mb-2 ">Tag</button>
                                 @endfor
                             </div>
                         </div>
@@ -137,7 +137,7 @@
 
                 </div>
                 @endfor
-                <div class="row">
+                <div class="row mt-auto">
                     <span class="col-2"><small><a href="#">? Selected</a></small></span>
                     <span class="suroi-tag-area-close col-8"><i class="fas fa-angle-up"></i></span>
                     <span class="col-2"><small><a href="#">Unselect All</a> | <a href="#">Select All</a></small></span>
