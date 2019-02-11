@@ -65,6 +65,10 @@ a{
 	height: 100vh;
 }
 
+.site-content{
+	min-height: 75vh;
+}
+
 .parallax{
   background-attachment: fixed;
 }
@@ -374,7 +378,7 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 }
 
 .suroi-landing-searchico, .suroi-tag-area-searchico{
-	margin: .75rem .75em;
+	margin: .75rem .75rem;
 	font-size: 	1.25rem;
 	transition: 0.2s;
 	position: absolute;
@@ -425,7 +429,8 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 
 
 .suroi-cards-4 .next-arrow i{
-	top: 11px;
+	top: 1px;
+	left: 1px;
 	position: relative;
 }
 
@@ -1350,9 +1355,16 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 
 }
 
-@media only screen and (min-width: 2560px) {
+@media only screen and (min-width: 2560px) and (max-width: 4000px)  {
     .container-fluid, .container{
     	max-width: 1440px !important;
+    }
+
+}
+
+@media only screen and (min-width: 4000px) {
+    .container-fluid, .container{
+    	max-width: 2160px !important;
     }
 
 }

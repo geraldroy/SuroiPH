@@ -7,7 +7,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Suroi') }}</title>
+    <title>
+      @if($__env->yieldContent('title') != "Home" && $__env->yieldContent('title') != "")
+          @yield('title') -
+      @endif
+
+    {{ config('app.name', 'Suroi') }}</title>
     <link rel='shortcut icon' type='image/x-icon' href="{{ asset('images/favicon.ico') }}" />
 
     <!-- Scripts -->
@@ -80,7 +85,9 @@
             </div>
         </nav>
 
-            @yield('content')
+        
+        @yield('content')
+  
 
         <div class="bg-suroi-green suroi-footer text-center mt-auto">
            <div class="container px-auto py-auto">

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Home')
 
 @section('content')
 
@@ -29,9 +30,11 @@ $paragraphs = array(
   <main role="main" class="inner cover text-white mt-auto">
     <div class="container">
       <h1 class="cover-heading shadow-text display-4">What's our next adventure?</h1>
-      <form class="my-2 my-lg-0 d-inline-flex w-75" action="/search">
+      <form class="my-2 my-lg-0 d-inline-flex w-75" autocomplete="off" action="/search">
         <input class="form-control form-control-lg color-suroi-green text-center shadow-box" name="q" type="search" placeholder='Try "Batanes", or "paragliding"' aria-label="Search" value="" data-list="<%= @location_data_list %>">
-        <span class="position-absolute align-middle color-suroi-green suroi-landing-searchico"><i class="fas fa-search"></i></span>
+        <div class="position-absolute align-middle color-suroi-green suroi-landing-searchico d-flex">
+          <i class="fas fa-search"></i>
+        </div>
       </form>
     </div>
   </main>
@@ -45,78 +48,79 @@ $paragraphs = array(
 </div>
 
 <!-- Main contents of Homepage -->
+<div class="site-content py-3"> 
+  @foreach(array_values($headers) as $i => $header)
+  <div class="container my-3 p-4 position-relative">
+      @if (!in_array($i, array(2,3)))
+      <div class="suroi-cards-4">
+          <h2>{{ $header }}</h2>
+          <p>{{ $paragraphs[$i] }}</p>
+          <div class="position-relative">
+              <div class="row">
+                  @for ($j = 0; $j < 4; $j++)
+                  <div class="col-md-6 col-lg">
+                      <div class="card">
+                          <div class="image-holder" style="background-image: url({{ asset('images/sample-card-bg.jpg') }});">
+                              <span class="align-bottom position-relative">Name</span>
 
-@foreach(array_values($headers) as $i => $header)
-<div class="container my-3 p-4 position-relative">
-    @if (!in_array($i, array(2,3)))
-    <div class="suroi-cards-4">
-        <h2>{{ $header }}</h2>
-        <p>{{ $paragraphs[$i] }}</p>
-        <div class="position-relative">
-            <div class="row">
-                @for ($j = 0; $j < 4; $j++)
-                <div class="col-md-6 col-lg">
-                    <div class="card">
-                        <div class="image-holder" style="background-image: url({{ asset('images/sample-card-bg.jpg') }});">
-                            <span class="align-bottom position-relative">Name</span>
+                              <a class="position-absolute favorite" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                  <i class="far fa-heart"></i>
+                              </a>
+                          </div>
+                          <div class="card-text-holder">
+                              <p class="caption">
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                              </p>
+                              <p><button type="button" class="btn btn-outline-primary btn-sm">P Over 9000</button></p>
 
-                            <a class="position-absolute favorite" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-                                <i class="far fa-heart"></i>
-                            </a>
-                        </div>
-                        <div class="card-text-holder">
-                            <p class="caption">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                            </p>
-                            <p><button type="button" class="btn btn-outline-primary btn-sm">P Over 9000</button></p>
+                              <?php $star_rate = 4; ?>
+                              <span class="d-inline-flex review-star">
+                                  @for ($k = 1; $k <= 5; $k++)
+                                      <i class="far fa-star @if ($k <= $star_rate) rate @endif"></i>
+                                  @endfor
+                              </span>
 
-                            <?php $star_rate = 4; ?>
-                            <span class="d-inline-flex review-star">
-                                @for ($k = 1; $k <= 5; $k++)
-                                    <i class="far fa-star @if ($k <= $star_rate) rate @endif"></i>
-                                @endfor
-                            </span>
-
-                            <div class="row">
-                                <div class="col-md">
-                                    <span class="review-ct">146 reviews</span>
-                                </div>
-                                <div class="col-md">
-                                    <span class="review-ct text-right suroi-agency">by Traveloko Agency</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endfor
-            </div>
-            <div class="d-none d-lg-block next-arrow ">
-                <i class="fas fa-angle-right"></i>
-            </div>
-        </div>
-        <div class="show-all"><a href="#">Show All <i class="fas fa-angle-right"></i></a></div>
-    </div>
-    @else
-    <div class="suroi-cards-2">
-        <h2>{{ $header }}</h2>
-        <p>{{ $paragraphs[$i] }}</p>
-        <div class="position-relative">
-            <div class="row">
-                @for ($j = 0; $j < 2; $j++)
-                <div class="col-md">
-                    <div class="card">
-                        <div class="image-holder" style="background-image: url({{ asset('images/sample-card-bg.jpg') }});">
-                            <span class="display-4">Name</span>
-                        </div>
-                    </div>
-                </div>
-                @endfor
-            </div>
-        </div>
-        <div class="show-all"><a href="#">Show All <i class="fas fa-angle-right"></i></a></div>
-    </div>
-    @endif
+                              <div class="row">
+                                  <div class="col-md">
+                                      <span class="review-ct">146 reviews</span>
+                                  </div>
+                                  <div class="col-md">
+                                      <span class="review-ct text-right suroi-agency">by Traveloko Agency</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  @endfor
+              </div>
+              <div class="d-none d-lg-flex next-arrow ">
+                  <i class="fas fa-angle-right m-auto"></i>
+              </div>
+          </div>
+          <div class="show-all"><a href="#">Show All <i class="fas fa-angle-right"></i></a></div>
+      </div>
+      @else
+      <div class="suroi-cards-2">
+          <h2>{{ $header }}</h2>
+          <p>{{ $paragraphs[$i] }}</p>
+          <div class="position-relative">
+              <div class="row">
+                  @for ($j = 0; $j < 2; $j++)
+                  <div class="col-md">
+                      <div class="card">
+                          <div class="image-holder" style="background-image: url({{ asset('images/sample-card-bg.jpg') }});">
+                              <span class="display-4">Name</span>
+                          </div>
+                      </div>
+                  </div>
+                  @endfor
+              </div>
+          </div>
+          <div class="show-all"><a href="#">Show All <i class="fas fa-angle-right"></i></a></div>
+      </div>
+      @endif
+  </div>
+  @endforeach
 </div>
-@endforeach
 
 @endsection

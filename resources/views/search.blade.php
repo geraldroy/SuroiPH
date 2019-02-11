@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+
+@section('title', 'Search')
+
 @section('content')
 
 <nav class="navbar-expand-lg suroi-tag-bar" >
@@ -147,7 +150,7 @@
     </div>
 </div>
 
-<div class="suroi-tag-results clearfix px-3 py-4 mb-3 container-fluid mw-100">
+<div class="suroi-tag-results clearfix px-3 py-4 mb-3 container-fluid mw-100 site-content">
     <div class="float-lg-right col-lg-3">
         <div class="suroi-tag-sidebar w-100 my-auto">
             <div class="suroi-tag-filters">
