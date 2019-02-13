@@ -52,7 +52,7 @@ class HomeController extends Controller
                 $orders = DB::table('transactions')-> where('customer_id', '=', $customer->id)
                     -> join('packages', 'transactions.package_id', '=', 'packages.id')
                     -> join('agencies', 'packages.agency_id', '=', 'agencies.id')
-                    -> select('packages.name as package_name', 'agencies.name as agency_name', 'packages.price as package_price', 'status as status')
+                    -> select('transactions.id as transaction_id','packages.name as package_name', 'agencies.name as agency_name', 'packages.price as package_price', 'status as status')
                     -> get();
 
                 return view('home', compact('user','orders'));

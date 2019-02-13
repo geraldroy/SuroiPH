@@ -86,6 +86,9 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $transaction = Transaction::find($id);
+        $transaction->delete();
+
+        return redirect()->route('home')->with('success', 'Booking has been successfully cancelled.');
     }
 }

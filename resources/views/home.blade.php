@@ -115,7 +115,11 @@
                                     <td>{{ $order->agency_name }}</td>
                                     <td>P{{ number_format($order->package_price, 2) }}</td>
                                     <td>
-
+                                        <form action="{{ route('transactions.destroy', $order->transaction_id) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

@@ -28,11 +28,13 @@ class PackageController extends Controller
     public function create()
     {
         if (Auth::check()) {
-            $agency = DB::table('agencies')->where('user_id', Auth::id())->first();
-            //Agency::where('user_id', '==', Auth::id());
-            return view('packages.create', compact('agency'));
+            $user = User::find(Auth::id());
+            if($user->type != 2) {
+                $agency = DB::table('agencies')->where('user_id', Auth::id())->first();
+                return view('packages.create', compact('agency'));
+            }
         }
-        return view('home');
+        return redirect()->route('home');
     }
 
     /**
