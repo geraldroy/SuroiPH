@@ -78,6 +78,23 @@ class TransactionController extends Controller
         //
     }
 
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function cancel(Request $request, $id)
+    {
+        $transaction = Transaction::find($id);
+        $transaction->status =  -1;
+        $transaction->save();
+
+        return redirect()->route('home')->with('success','Booking has been successfully cancelled.');
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -86,9 +103,6 @@ class TransactionController extends Controller
      */
     public function destroy($id)
     {
-        $transaction = Transaction::find($id);
-        $transaction->delete();
-
-        return redirect()->route('home')->with('success', 'Booking has been successfully cancelled.');
+        //
     }
 }

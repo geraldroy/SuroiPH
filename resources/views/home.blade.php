@@ -109,19 +109,17 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>
-                                        <span class="badge badge-warning">Pending</span>
                                         @if ($order->status == 0)
-                                        <a href="#">{{ $order->package_name }}</a>
+                                            <span class="badge badge-warning">Pending</span>
+                                        @elseif ($order->status == -1)
+                                            <span class="badge badge-danger">Cancelled</span>
                                         @endif
+                                        <a href="#">{{ $order->package_name }}</a>
                                     </td>
                                     <td>{{ $order->agency_name }}</td>
                                     <td>P{{ number_format($order->package_price, 2) }}</td>
                                     <td>
-                                        <form action="{{ route('transactions.destroy', $order->transaction_id) }}" method="post">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button class="btn btn-danger btn-sm" type="submit">Cancel</button>
-                                        </form>
+                                        <a href="{{ route('transactions.cancel', $order->transaction_id) }}" class="btn btn-danger btn-sm">Cancel</a>
                                     </td>
                                 </tr>
                                 @endforeach

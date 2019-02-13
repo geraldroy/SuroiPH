@@ -26,3 +26,4 @@ Route::resources([
     'transactions' => 'TransactionController'
 ]);
 Route::get('packages/{package}/book', array('as' => 'packages.book', 'uses' => 'PackageController@book'));
+Route::get('transactions/{transaction}', array('as' => 'transactions.cancel', 'uses' => 'TransactionController@cancel'));
