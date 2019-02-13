@@ -241,7 +241,7 @@
                             </div>
                             <div class="col-8">
                                 <div class="pr-3">
-                                    <span class="ad">AD</span><h3 class="h3">Island Hoping in Cebu</h3><span class="bolt rounded-circle"><i class="fas fa-bolt"></i></span>
+                                    <span class="ad">AD</span><h3 class="h3">Island Hoping in Cebu</h3><span class="bolt rounded-circle d-inline-flex"><i class="fas fa-bolt m-auto"></i></span>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                     </p>
