@@ -6,7 +6,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div id="tripsum" style="border-bottom: 1px solid #B7B7B7; padding: 1.5em 0;">
-                    <h1><strong>Review your trip details</strong></h1>
+                    <h1 class="mb-4"><strong>Review your trip details</strong></h1>
                     <h3><strong>Trip Summary</strong></h3>
                     <h3>You are booking the travel package</h3>
                     <div class="col-12 d-block d-lg-none"><hr></div>
@@ -121,19 +121,19 @@
                         <div class="d-flex">
                             <ul class="list-ic vertical mx-auto">
                                 <li>
-                                    <span class="bullet">1</span>
+                                    <span class="bullet noselect">1</span>
                                     <a href="#basicinfo">Basic information</a>
                                 </li>
                                 <li>
-                                    <span class="bullet">2</span>
+                                    <span class="bullet  noselect">2</span>
                                     <a href="#paydeal">Payment deals</a>
                                 </li>
                                 <li>
-                                    <span class="bullet">3</span>
+                                    <span class="bullet noselect">3</span>
                                     <a href="#tripsum">Trip summary</a>
                                 </li>
                                  <li>
-                                    <span class="bullet">4</span>
+                                    <span class="bullet noselect">4</span>
                                     <a href="#ttkim">Things to keep in mind</a>
                                 </li>
                             </ul>
