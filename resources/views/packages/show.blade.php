@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', $package->name)
+
 @section('content')
 
 <?php
@@ -29,8 +31,8 @@ $promocount = 9;
     </a>
 </div>
 
-<div class="suroi-package">
-    <div class="container py-4">
+<div class="suroi-package site-content py-5">
+    <div class="container">
         <div class="row">
             <div class="col-lg-8 pr-5">
                 <nav aria-label="breadcrumb">
@@ -226,16 +228,16 @@ $promocount = 9;
 
                 <div class="card">
                     <span class="d-flex text-center justify-content-around align-middle">
-                        <i class="far fa-calendar-alt icon" aria-hidden="true"></i>
+                        <i class="far fa-calendar-alt icon my-auto" aria-hidden="true"></i>
                         <input type="textfield" name="before" value="25 Dec 2018" class="date-input text-center w-25" readonly>
-                        <i class="fa fa-arrow-right"></i>
+                        <i class="fa fa-arrow-right my-auto"></i>
                         <input type="textfield" name="before" value="03 Jan 2019" class="date-input text-center w-25"  readonly></span></div><div class="d-inline-flex">
                         </span>
                     </div>
 
                     <div class="card">
                         <span class="d-flex text-center justify-content-around align-middle">
-                            <i class="fas fa-user-friends icon"></i>
+                            <i class="fas fa-user-friends icon my-auto"></i>
                             <select class="w-75">
                                 <option>1 Traveller</option>
                                 <option>2 Travellers</option>

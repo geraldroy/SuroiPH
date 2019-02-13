@@ -65,6 +65,10 @@ a{
 	height: 100vh;
 }
 
+.site-content{
+	min-height: 75vh;
+}
+
 .parallax{
   background-attachment: fixed;
 }
@@ -116,6 +120,17 @@ input:focus::-moz-placeholder { color:transparent !important; }
 input:focus::-ms-input-placeholder { color:transparent !important; }
 input:focus:-moz-placeholder { color:transparent !important; }
 input:focus:-ms-input-placeholder { color:transparent !important; }
+
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
 
 .suroi-tag-search input::-webkit-input-placeholder{
     color: white;
@@ -322,7 +337,7 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 	position: relative;
 	bottom: 0;
 	width: 100%;
-
+	min-height: 25vh;
 }
 
 .suroi-footer .suroi-logo{
@@ -374,7 +389,7 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 }
 
 .suroi-landing-searchico, .suroi-tag-area-searchico{
-	margin: .75rem .75em;
+	margin: .75rem .75rem;
 	font-size: 	1.25rem;
 	transition: 0.2s;
 	position: absolute;
@@ -425,7 +440,8 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 
 
 .suroi-cards-4 .next-arrow i{
-	top: 11px;
+	top: 1px;
+	left: 1px;
 	position: relative;
 }
 
@@ -969,11 +985,14 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 	border: 1px solid #00CE7F;
 	border-radius: 3px;
 	color: #00CE7F;
-	padding: 0.2rem;
-	vertical-align: top;
 	margin-right: 0.5rem;
+	
 }
 
+.column-sort .ad{
+	line-height: 0;
+	padding: 0.25rem 0.1rem;
+}
 .column-sort .image-holder{
 	background-color: #414141;
 	min-height: 8rem;
@@ -1000,12 +1019,12 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 .column-sort .bolt{
 	border-radius: 100em;
 	margin-left: 0.5rem;
-	padding: .4em .7em;
+	width: 2em;
+	height: 2em;
 	vertical-align: top;
 }
 
 .column-sort .bolt i{
-	top: -0.25em;
 	position: relative;
 }
 
@@ -1049,7 +1068,8 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 	color: #707070;
 	border: 1px solid #707070;
 	border-radius: 0.5em;
-	padding: 0.25em 0;
+	line-height: 0;
+	padding: 1.15em 0;
 	font-size: 0.6em;
 	text-align: center;
 	margin: 0.5em;
@@ -1276,7 +1296,7 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 .suroi-tag-selected:hover{
 	background-color: transparent;
 	color: #00CE7F;
-	border: 1px solid #00CE7F;
+	border: 2px solid #00CE7F;
 }
 
 .suroi-tag-selected{
@@ -1305,6 +1325,88 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 
 .suroi-tag-not-selected:focus, .suroi-tag-selected:focus{
 	box-shadow: none;
+}
+
+.carousel-indicators .active{
+	background-color: transparent;
+}
+
+
+.list-ic a {
+  color: #414141;
+  text-decoration: none;
+  margin-left: 2em;
+}
+.list-ic li {
+  position: relative;
+  font-weight: 500;
+  font-size: 0.85em;
+}
+.list-ic li .bullet {
+  display: inline-block;
+  font-weight: 800;
+  width: 1.5em;
+  height: 1.5em;
+  text-align: center;
+  line-height: 1.5em;
+  border-radius: 1em;
+  border: #A3A3A3 2px solid;
+  background: white;
+  color: white;
+  position: relative;
+  z-index: 3;
+  transition: 0.1s;
+}
+
+.list-ic li:hover .bullet {
+ 
+  background: #00CE7F;
+  color: #00CE7F;
+
+}
+
+.list-ic li:hover a {
+ 
+  color: #00CE7F;
+
+}
+
+.list-ic li::before {
+  content: '';
+  position: absolute;
+  background: #A3A3A3;
+
+}
+
+.list-ic.vertical {
+  padding: 0;
+  margin: 0;
+}
+.list-ic.vertical li {
+  list-style-type: none;
+  text-align: left;
+
+}
+.list-ic.vertical li .bullet {
+  margin: 1em 0;
+}
+.list-ic.vertical li::before {
+  top: -30px;
+  left: 8px;
+  width: 2px;
+  height: 4em;
+}
+.list-ic li:first-child::before {
+  display: none;
+}
+.list-ic .active {
+  background: #00CE7F;
+}
+.list-ic .active ~ li {
+  background: #00CE7F;
+}
+.list-ic .active ~ li::before {
+  background: #00CE7F;
 }
 
 
@@ -1350,9 +1452,16 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 
 }
 
-@media only screen and (min-width: 2560px) {
+@media only screen and (min-width: 2560px) and (max-width: 4000px)  {
     .container-fluid, .container{
     	max-width: 1440px !important;
+    }
+
+}
+
+@media only screen and (min-width: 4000px) {
+    .container-fluid, .container{
+    	max-width: 2160px !important;
     }
 
 }
