@@ -23,10 +23,10 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $user = User::find(Auth::id());
-            if($user->type == 0) { //super admin
+            if($user->type == 'admin') { //super admin
 
             }
-            else if($user->type == 1) { //agency
+            else if($user->type == 'agency') { //agency
                 $agency = Agency::where('user_id', '=', $user->id)->first();
                 if($agency == null) {   //create profile first
                     return redirect('agencies/create');
@@ -34,7 +34,7 @@ class HomeController extends Controller
                 $packages = Package::where('agency_id', '=', $agency->id)->get();
                 return view('home', compact('user', 'packages'));
             }
-            else if($user->type == 2) { //customer
+            else if($user->type == 'customer') { //customer
                 $customer = Customer::where('user_id', '=', $user->id)->first();
                 if($customer == null) {   //create profile first
                     return redirect('customers/create');

@@ -29,7 +29,7 @@ class PackageController extends Controller
     {
         if (Auth::check()) {
             $user = User::find(Auth::id());
-            if($user->type != 2) {
+            if($user->type != 'customer') {
                 $agency = DB::table('agencies')->where('user_id', Auth::id())->first();
                 return view('packages.create', compact('agency'));
             }

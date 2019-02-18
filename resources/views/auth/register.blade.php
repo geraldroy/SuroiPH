@@ -18,9 +18,9 @@
                             <label for="type" class="col-md-4 col-form-label text-md-right">{{ __('Account Type') }}</label>
 
                             <div class="col-md-6">
-                                <input id="type" type="radio" name="type" value="0" checked> Administrator<br>
-                                <input id="type" type="radio" name="type" value="1"> Travel Agency<br>
-                                <input id="type" type="radio" name="type" value="2"> Customer
+                                <input id="type" type="radio" name="type" value="admin" checked> Administrator<br>
+                                <input id="type" type="radio" name="type" value="agency"> Travel Agency<br>
+                                <input id="type" type="radio" name="type" value="customer"> Customer
 
                                 @if ($errors->has('type'))
                                     <span class="invalid-feedback" role="alert">
