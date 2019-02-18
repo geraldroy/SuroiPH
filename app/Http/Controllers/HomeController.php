@@ -24,7 +24,16 @@ class HomeController extends Controller
         if (Auth::check()) {
             $user = User::find(Auth::id());
             if($user->type == 'admin') { //super admin
-
+                $agencies = DB::table('agencies')
+                    ->join('packages', 'agencies.id', '=', 'packages.agency_id')
+                    ->select('agencies.name as name', 'agencies.description as description', DB::raw('count(packages.agency_id) as packages_count'))
+                    ->groupBy('agencies.id')->get();
+                $customers = DB::table('customers')
+                    ->join('users', 'customers.user_id', '=', 'users.id')
+                    ->join('transactions', 'customers.id', '=', 'transactions.customer_id')
+                    ->select('customers.name_first as firstname', 'customers.name_last as lastname', 'users.email as email', DB::raw('count(transactions.customer_id) as transactions_count'))
+                    ->groupBy('customers.id')->get();
+                return view('home', compact('user', 'agencies', 'customers'));
             }
             else if($user->type == 'agency') { //agency
                 $agency = Agency::where('user_id', '=', $user->id)->first();
