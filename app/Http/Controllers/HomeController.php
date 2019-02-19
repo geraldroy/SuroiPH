@@ -33,7 +33,9 @@ class HomeController extends Controller
                     ->join('transactions', 'customers.id', '=', 'transactions.customer_id')
                     ->select('customers.name_first as firstname', 'customers.name_last as lastname', 'users.email as email', DB::raw('count(transactions.customer_id) as transactions_count'))
                     ->groupBy('customers.id')->get();
-                return view('home', compact('user', 'agencies', 'customers'));
+                $locations = DB::table('tags')->where('type', '=', 'location')->orderBy('name')->get();
+
+                return view('home', compact('user', 'agencies', 'customers', 'locations'));
             }
             else if($user->type == 'agency') { //agency
                 $agency = Agency::where('user_id', '=', $user->id)->first();
