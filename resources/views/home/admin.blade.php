@@ -17,6 +17,86 @@
         ...
     </div>
     <div class="tab-pane fade" id="nav-locations" role="tabpanel" aria-labelledby="nav-locations-tab">
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#createLocationModal">
+            Create New Location
+        </button>
+
+        <!-- Create Location Modal -->
+        <div class="modal fade pt-5 mt-5" id="createLocationModal" tabindex="-1" role="dialog" aria-labelledby="createLocationModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="createLocationModalLabel">Create New Location</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form method="POST" action="{{ route('tags.store') }}" style="width: 100%!important;">
+                        @csrf
+                        <div class="modal-body">
+
+                            <input id="type" name="type" type="hidden" value="location">
+
+                            <div class="form-group row">
+                                <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label>
+
+                                <div class="col-md-7">
+                                    <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
+
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="description" class="col-md-3 col-form-label text-md-right">{{ __('Description') }}</label>
+
+                                <div class="col-md-7">
+                                    <textarea id="description" name="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5"> </textarea>
+
+                                    @if ($errors->has('description'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('description') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="type" class="col-md-3 col-form-label text-md-right">{{ __('Parent') }}</label>
+
+                                <div class="col-md-7">
+                                    <select id="parent" name="parent" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" required>
+                                        <option value="0">None</option>
+                                        @foreach ($locations as $location)
+                                        <option value="{{ $location->id }}"> {{ ucwords($location->name) }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @if ($errors->has('parent'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('parent') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">
+                                {{ __('Create Location') }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <div class="card-columns">
             @foreach($locations as $location)
             <div class="card">

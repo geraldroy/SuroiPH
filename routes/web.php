@@ -23,7 +23,8 @@ Route::resources([
     'agencies' => 'AgencyController',
     'customers' => 'CustomerController',
     'packages' => 'PackageController',
-    'transactions' => 'TransactionController'
+    'transactions' => 'TransactionController',
+    'tags' => 'TagController'
 ]);
 Route::get('packages/{package}/book', array('as' => 'packages.book', 'uses' => 'PackageController@book'));
 Route::get('transactions/{transaction}', array('as' => 'transactions.cancel', 'uses' => 'TransactionController@cancel'));
