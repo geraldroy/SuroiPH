@@ -1,18 +1,14 @@
-<nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Dashboard</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-orders" role="tab" aria-controls="nav-orders" aria-selected="false">Orders</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-customers" role="tab" aria-controls="nav-contact" aria-selected="false">Customers</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-reports" role="tab" aria-controls="nav-contact" aria-selected="false">Reports</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-promotions" role="tab" aria-controls="nav-contact" aria-selected="false">Promotions</a>
+
+@if(session()->get('success'))
+    <div class="alert alert-success" role="alert">
+        {{ session()->get('success') }}
     </div>
-</nav>
+@endif
+
+
+@include('home.partials.nav_header', ['userType' => $userString] )
+
 <div class="tab-content pt-4" id="nav-tabContent">
-    @if(session()->get('success'))
-        <div class="alert alert-success" role="alert">
-            {{ session()->get('success') }}
-        </div>
-    @endif
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <div class="d-flex">
             <a href="{{ route('packages.create') }}" class="p-2">Create New Package</a>

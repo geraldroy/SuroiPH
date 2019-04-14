@@ -1,23 +1,22 @@
 @extends('layouts.app')
 
+@section('title', 'Create Agency Profile')
+
 @section('content')
-<div class="container h-100 pt-5 mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Create Agency Profile') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('agencies.store') }}">
+<div class="container site-content py-5 mt-5 d-flex">
+    <div class="row justify-content-center m-0 flex-column m-auto w-100">
+        <h1 class="mx-auto my-3"><strong> {{ __('Create Agency Profile') }}</strong></h1>
+        <div class="col-12">
+                <div class="card p-4">
+                    <form method="POST" action="{{ route('agencies.store') }}" style="width: 100% !important">
                         @csrf
-
 
                         <input id="user_id" name="user_id" type="hidden" value="{{ Auth::id() }}">
 
                         <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                            <div class="col-lg-6">
+                                 <label for="name" class="col-form-label text-md-right">{{ __('Name') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="name" type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" required>
 
                                 @if ($errors->has('name'))
@@ -25,27 +24,19 @@
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="description" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                                 <label for="description" class="col-form-label text-md-right">{{ __('Description') }}</label>
 
-                            <div class="col-md-6">
-                                <textarea id="description" name="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5" required> </textarea>
+                                 <textarea id="description" name="description" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" rows="5" required> </textarea>
 
                                 @if ($errors->has('description'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('description') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Office Address') }}</label>
+                                <label for="address" class="col-form-label text-md-right">{{ __('Office Address') }}</label>
 
-                            <div class="col-md-6">
                                 <input id="address" type="text" name="address" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" required>
 
                                 @if ($errors->has('address'))
@@ -53,89 +44,87 @@
                                         <strong>{{ $errors->first('address') }}</strong>
                                     </span>
                                 @endif
+
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label for="mobile1" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number 1') }}</label>
+                            <div class="col-md-6 d-flex flex-column">
 
-                            <div class="col-md-6">
-                                <input id="mobile1" type="text" name="mobile1" class="form-control{{ $errors->has('mobile1') ? ' is-invalid' : '' }}" required>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label for="mobile1" class="col-form-label text-md-right">{{ __('Mobile Number 1') }}</label>
+                                        <input id="mobile1" type="text" name="mobile1" class="form-control{{ $errors->has('mobile1') ? ' is-invalid' : '' }}" required>
 
-                                @if ($errors->has('mobile1'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('mobile1') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                                        @if ($errors->has('mobile1'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('mobile1') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
-                        <div class="form-group row">
-                            <label for="mobile2" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number 2') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="mobile2" type="text" name="mobile2" class="form-control{{ $errors->has('mobile2') ? ' is-invalid' : '' }}">
+                                    <div class="col-md-6">
+                                        <label for="mobile2" class="col-form-label text-md-right">{{ __('Mobile Number 2') }}</label>
 
-                                @if ($errors->has('mobile2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('mobile2') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                                         <input id="mobile2" type="text" name="mobile2" class="form-control{{ $errors->has('mobile2') ? ' is-invalid' : '' }}">
 
-                        <div class="form-group row">
-                            <label for="landline1" class="col-md-4 col-form-label text-md-right">{{ __('Landline Number 1') }}</label>
+                                        @if ($errors->has('mobile2'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('mobile2') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
 
-                            <div class="col-md-6">
-                                <input id="landline1" type="text" name="landline1" class="form-control{{ $errors->has('landline1') ? ' is-invalid' : '' }}">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                         <label for="landline1" class="col-form-label text-md-right">{{ __('Landline Number 1') }}</label>
 
-                                @if ($errors->has('landline1'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('landline1') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                                         <input id="landline1" type="text" name="landline1" class="form-control{{ $errors->has('landline1') ? ' is-invalid' : '' }}">
 
-                        <div class="form-group row">
-                            <label for="landline2" class="col-md-4 col-form-label text-md-right">{{ __('Landline Number 2') }}</label>
+                                        @if ($errors->has('landline1'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('landline1') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
 
-                            <div class="col-md-6">
-                                <input id="landline2" type="text" name="landline2" class="form-control{{ $errors->has('landline2') ? ' is-invalid' : '' }}">
+                                    <div class="col-md-6">
+                                         <label for="landline2" class="col-form-label text-md-right">{{ __('Landline Number 2') }}</label>
 
-                                @if ($errors->has('landline2'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('landline2') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                                         <input id="landline2" type="text" name="landline2" class="form-control{{ $errors->has('landline2') ? ' is-invalid' : '' }}">
 
-                        <div class="form-group row">
-                            <label for="fax" class="col-md-4 col-form-label text-md-right">{{ __('Fax Number') }}</label>
+                                        @if ($errors->has('landline2'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('landline2') }}</strong>
+                                            </span>
+                                        @endif
+                                    </div>
+                                </div>
 
-                            <div class="col-md-6">
-                                <input id="fax" type="text" name="fax" class="form-control{{ $errors->has('fax') ? ' is-invalid' : '' }}">
 
-                                @if ($errors->has('fax'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('fax') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                                <div>
+                                    <label for="fax" class="col-form-label text-md-right">{{ __('Fax Number') }}</label>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Create Profile') }}
-                                </button>
+                                
+                                    <input id="fax" type="text" name="fax" class="form-control{{ $errors->has('fax') ? ' is-invalid' : '' }}">
+
+                                    @if ($errors->has('fax'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('fax') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
+                                <div class="d-flex mt-auto">
+                                    <button type="submit" class="btn btn-primary w-100 pt-2 pb-1">
+                                        <i class="fas fa-plus"></i> {{ __('Create Profile') }}
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>
                 </div>
-            </div>
+       
         </div>
     </div>
 </div>

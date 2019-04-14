@@ -14,7 +14,7 @@
 		</div>
 	</div>
 
-	<div class="col-lg-6 p-4 d-flex">
+	<div class="col-lg-4 p-2 d-flex">
 		<div class="p-3 card w-100">
 			<div class="m-auto text-center">
 				<p class="h1"><strong>12,345</strong></p>
@@ -23,7 +23,7 @@
 		</div>
 	</div>
 
-	<div class="col-lg-6 p-4 d-flex">
+	<div class="col-lg-4 p-2 d-flex">
 		<div class="p-3 card w-100">
 			<div class="m-auto text-center">
 				<p class="h1"><strong>12,345</strong></p>
@@ -32,7 +32,7 @@
 		</div>
 	</div>
 
-	<div class="col-lg-6 p-4 d-flex">
+	<div class="col-lg-4 p-2 d-flex">
 		<div class="p-3 card w-100">
 			<div class="m-auto text-center">
 				<p class="h1"><strong>12,345</strong></p>

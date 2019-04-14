@@ -1,19 +1,21 @@
 @extends('layouts.app')
 
-@section('title', 'Profile')
 
 @section('content')
-<div class="container pt-5 mt-5 ">
+<div class="container py-5 mt-5 ">
     <div class="row justify-content-center m-0">
         <div class="site-content w-100">
             @if($user->type == 'admin')
-                @include('home.admin')
+                @section('title', 'Admin')
+                @include('home.admin', ['userString' => $user->type])
             @endif
             @if($user->type == 'agency')
-                @include('home.agency')
+                @section('title', 'Agency')
+                @include('home.agency', ['userString' => $user->type])
             @endif
             @if($user->type == 'customer')
-                @include('home.customer')
+                @section('title', 'Profile')
+                @include('home.customer', ['userString' => $user->type])
             @endif
         </div>
     </div>
