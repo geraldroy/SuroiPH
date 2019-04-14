@@ -27,9 +27,7 @@
                                             </span>
                                         @endif
                                     </div>
-                                </div>
 
-                                <div class="form-group">
                                     <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
 
                                     <div class="">
@@ -44,7 +42,8 @@
                                     </div>
                                 </div>
 
-                                <div class="form-group d-flex">
+
+                                <div class="d-flex">
                                     <div class="ml-auto mr-auto mr-lg-0">
                                         <div class="form-check">
                                             <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

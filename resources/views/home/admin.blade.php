@@ -1,20 +1,36 @@
+
 <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Dashboard</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-locations" role="tab" aria-controls="nav-locations" aria-selected="false">Locations</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-tags" role="tab" aria-controls="nav-tags" aria-selected="false">Tags</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-agencies" role="tab" aria-controls="nav-agencies" aria-selected="false">Agencies</a>
-        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-customers" role="tab" aria-controls="nav-customers" aria-selected="false">Customers</a>
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="d-none d-md-inline-block"> Dashboard</span>
+        </a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-locations" role="tab" aria-controls="nav-locations" aria-selected="false">
+            <i class="fas fa-map-marked-alt"></i>
+            <span class="d-none d-md-inline-block"> Locations</span>
+        </a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-tags" role="tab" aria-controls="nav-tags" aria-selected="false">
+            <i class="fas fa-tags"></i>
+            <span class="d-none d-md-inline-block"> Tags</span>
+        </a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-agencies" role="tab" aria-controls="nav-agencies" aria-selected="false">
+            <i class="fas fa-luggage-cart"></i>
+            <span class="d-none d-md-inline-block"> Agencies</span>
+        </a>
+        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-customers" role="tab" aria-controls="nav-customers" aria-selected="false">
+            <i class="fas fa-user-tag"></i>
+            <span class="d-none d-md-inline-block"> Customers</span>
+        </a>
     </div>
 </nav>
-<div class="tab-content pt-4" id="nav-tabContent">
+<div class="tab-content pt-4 w-100" id="nav-tabContent">
     @if(session()->get('success'))
         <div class="alert alert-success" role="alert">
             {{ session()->get('success') }}
         </div>
     @endif
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-        ...
+        @include('home.partials.dashboard')
     </div>
     <div class="tab-pane fade" id="nav-locations" role="tabpanel" aria-labelledby="nav-locations-tab">
 

@@ -29,9 +29,7 @@
                                             </span>
                                         @endif
                                     </div>
-                                </div>
 
-                                <div class="form-group">
                                     <label for="password" class="col-form-label text-md-right">{{ __('Password') }}</label>
 
                                     <div class="">
@@ -44,9 +42,7 @@
                                             </span>
                                         @endif
                                     </div>
-                                </div>
 
-                                <div class="form-group">
                                     <label for="password-confirm" class="col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                                     <div class="">

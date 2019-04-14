@@ -3,9 +3,9 @@
 @section('title', 'Profile')
 
 @section('content')
-<div class="container h-100 pt-5 mt-5 ">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+<div class="container pt-5 mt-5 ">
+    <div class="row justify-content-center m-0">
+        <div class="site-content w-100">
             @if($user->type == 'admin')
                 @include('home.admin')
             @endif

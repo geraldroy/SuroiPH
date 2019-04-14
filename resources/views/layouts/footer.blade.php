@@ -2,7 +2,7 @@
            <div class="container px-auto py-auto">
               <div class="row">
                <div class="col-lg-8 text-md-left">
-                  <div class="row">
+                  <div class="row m-0">
                    <div class="col-md-4 col-lg">
                      <h6>Suroi</h6>
                          <ul class="list-unstyled text-small">
