@@ -96,11 +96,9 @@
                   </div>
                 </div>
 
-                <div class="suroi-file form-control-file">
-                    <div class="btn btn-primary" onclick="$('#file-upload').click()">
-                        Upload Profile Picture
-                    </div>
-                    <input type="file" name="profpic" id="file-upload" class="position-absolute d-none">
+                <div class="suroi-file form-group col-12">
+                  <label for="profpic-upload"><strong>Upload Profile Picture</strong></label>
+                  <input type="file" name="profpic" id="profpic-upload" class="form-control-file">
                 </div>
             </div>
 
