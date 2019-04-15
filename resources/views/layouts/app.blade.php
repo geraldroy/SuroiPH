@@ -61,7 +61,7 @@
                     labels:['Sample', 'Sample1', 'Sample2', 'Sample3', 'Sample4'],
                     datasets:[{
                         label: "Data1",
-                        data: [ 20, 10, 6, 25, 20],
+                        data: [ 273, 100, 60, 250, 217],
                         backgroundColor: ["#00CE7F", "#00CE7F", "#00CE7F", "#00CE7F", "#00CE7F"]
                     }]
                 },

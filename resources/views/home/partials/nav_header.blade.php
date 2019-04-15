@@ -25,6 +25,10 @@
 
 
             @if ($userType == "agency")
+                 <a class="nav-item nav-link" id="nav-packages-tab" data-toggle="tab" href="#nav-packages" role="tab" aria-controls="nav-packages" aria-selected="true">
+                    <i class="fas fa-box"></i>
+                    <span class="d-none d-md-inline-block"> Packages</span>
+                </a>
                 <a class="nav-item nav-link" id="nav-orders-tab" data-toggle="tab" href="#nav-orders" role="tab" aria-controls="nav-orders" aria-selected="false">
                     <i class="fas fa-tags"></i>
                     <span class="d-none d-md-inline-block"> Orders</span>

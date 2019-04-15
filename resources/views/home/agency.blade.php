@@ -10,6 +10,9 @@
 
 <div class="tab-content pt-4" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        @include('home.partials.dashboard', ['userType' => $userString])
+    </div>
+    <div class="tab-pane fade show" id="nav-packages" role="tabpanel" aria-labelledby="nav-packages-tab">
         <div class="d-flex">
             <a href="{{ route('packages.create') }}" class="p-2">Create New Package</a>
             <a href="#" class="ml-auto p-2">Create/Edit Profile</a>
