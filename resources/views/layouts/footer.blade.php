@@ -46,7 +46,7 @@
                </div>
                </div>
                <div class="col-lg-4 text-lg-right">
-                 <img src="{{ asset('images/suroi-brand-white.png') }}" class="img-fluid suroi-logo mt-4">
+                 <img src="{{ asset('images/suroi-brand-white.png') }}" class="suroi-logo mt-4">
                </div>
              </div>
            </div>
