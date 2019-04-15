@@ -103,8 +103,8 @@
                     </div>
                 </div>
 
-                <div class="d-none d-lg-block next-arrow" href="#suroi-search-promo" role="button" data-slide="next">
-                    <i class="fas fa-angle-right"></i>
+                <div class="d-none d-lg-flex next-arrow" href="#suroi-search-promo" role="button" data-slide="next">
+                    <i class="fas fa-angle-right m-auto"></i>
                 </div>
             </div>
             <div class="show-all d-lg-none"><a href="#">Show All <i class="fas fa-angle-right"></i></a></div>

@@ -9,7 +9,7 @@ $slidecount = 9;
 $promocount = 9;
 ?>
 
-<div id="suroi-package-slideshow" class="carousel slide h-50  m" data-ride="carousel" data-interval="false" style="background-color: #5a5a5a">
+<div id="suroi-package-slideshow" class="carousel slide h-50" data-ride="carousel" data-interval="false" style="background-color: #5a5a5a">
     <div class="carousel-indicators position-absolute">
         @for ($i = 0; $i < $slidecount; $i++)
         <i data-target="#suroi-package-slideshow" data-slide-to="{{ $i }}" class="fas fa-circle @if ($i == 0) active @endif"></i>
@@ -24,10 +24,10 @@ $promocount = 9;
 
     </div>
     <a class="arrow carousel-control-prev ml-3" href="#suroi-package-slideshow" role="button" data-slide="prev">
-        <i class="fas fa-angle-left carousel-control-prev-icon"></i>
+        <i class="fas fa-angle-left"></i>
     </a>
     <a class="arrow carousel-control-next mr-3" href="#suroi-package-slideshow" role="button" data-slide="next">
-        <i class="fas fa-angle-right carousel-control-next-icon"></i>
+        <i class="fas fa-angle-right"></i>
     </a>
 </div>
 
@@ -334,8 +334,8 @@ $promocount = 9;
                     </div>
                 </div>
 
-                <div class="d-none d-lg-block next-arrow" href="#suroi-search-promo" role="button" data-slide="next">
-                    <i class="fas fa-angle-right"></i>
+                <div class="d-none d-lg-flex next-arrow" href="#suroi-search-promo" role="button" data-slide="next">
+                    <i class="fas fa-angle-right m-auto"></i>
                 </div>
             </div>
             <div class="show-all d-lg-none"><a href="#">Show All <i class="fas fa-angle-right"></i></a></div>
