@@ -64,9 +64,15 @@
             </div>
             <div class="row">
               <div class="col-md-4">
-                <strong>Birthday</strong>
                 <div class="form-control-group">
-                    <input type="date" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}"  id="birthday" placeholder="" required>
+                    <label for="mobile"><strong>{{ __('Birthday') }} </strong></label>
+                    <input type="date" name="birthday" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}"  id="birthday" placeholder="" required>
+
+                     @if ($errors->has('birthday'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('birthday') }}</strong>
+                        </span>
+                    @endif
                 </div>
               </div>
 
@@ -95,7 +101,7 @@
                 <div class="col-6">
                   <div class="form-group">
                     <label for="mobile"><strong>{{ __('Phone Number') }} </strong></label>
-                    <input type="text" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" id="mobile" placeholder="E.g. +63 912 345 6789" required>
+                    <input type="text" name="mobile" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" id="mobile" placeholder="E.g. +63 912 345 6789" required>
 
                     @if ($errors->has('mobile'))
                         <span class="invalid-feedback" role="alert">
@@ -107,8 +113,9 @@
 
                  <div class="col-6">
                   <div class="form-group">
-                    <label for="transaction-email"><strong>Email address </strong></label>
-                    <input type="email" class="form-control" id="transaction-email" placeholder="E.g. juan.delacruz@email.com">
+                    <label for="email"><strong>Email address </strong></label>
+                    <input type="email" class="form-control" name="email"
+                    id="email" placeholder="E.g. juan.delacruz@email.com" value="{{ Auth::user()->email }}">
                   </div>
                 </div>
             </div>
