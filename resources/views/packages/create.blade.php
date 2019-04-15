@@ -1,14 +1,15 @@
 @extends('layouts.app')
 
-@section('content')
-<div class="container site-content py-5 mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Create New Package') }}</div>
+@section('title', 'Create New Package')
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('packages.store') }}">
+@section('content')
+<div class="container site-content py-5 mt-5 d-flex flex-column">
+    <div class="row justify-content-center m-auto w-100">
+        <div class="col-md-8">
+            <h1 class="mx-auto my-3 text-center"><strong>{{ __('Create New Package') }}</strong></h1>
+        
+                <div class="card p-4">
+                    <form method="POST" action="{{ route('packages.store') }}" style="width:100% !important">
                         @csrf
 
 
@@ -79,7 +80,6 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
 </div>
