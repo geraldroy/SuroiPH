@@ -59,7 +59,7 @@
                         <div class="carousel-item @if ($i == 0) active @endif ">
                             <div class="row">
                                 @for ($j = 0; $j < 4; $j++)
-                                <div class="col-md-6 col-lg">
+                                <div class="col-md-6 col-lg-3">
                                     <div class="card">
                                         <div class="image-holder" style="background-image: url({{ asset('images/sample-card-bg.jpg') }} );">
                                             <span class="align-bottom position-relative">Name</span>
