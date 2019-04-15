@@ -116,28 +116,6 @@
             <hr>
 
             <div class="row">
-                <div class="col-6">
-                  <div class="form-group">
-                    <label for="mobile"><strong>{{ __('Phone Number') }} </strong></label>
-                    <input type="text" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" id="mobile" placeholder="E.g. +63 912 345 6789" required>
-
-                    @if ($errors->has('mobile'))
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $errors->first('mobile') }}</strong>
-                        </span>
-                    @endif
-                  </div>
-                </div>
-
-                 <div class="col-6">
-                  <div class="form-group">
-                    <label for="transaction-email"><strong>Email address </strong></label>
-                    <input type="email" class="form-control" id="transaction-email" placeholder="E.g. juan.delacruz@email.com">
-                  </div>
-                </div>
-            </div>
-
-            <div class="row">
               <div class="col-12">
                   <label for="address_street1" class="col-form-label"><strong>{{ __('Street Line 1') }}</strong></label>
                     
