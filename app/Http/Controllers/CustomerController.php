@@ -79,8 +79,8 @@ class CustomerController extends Controller
     public function edit($id)
     {
         if (Auth::check() && $id == Auth::id()) {
-            $agency = Agency::find($id);
-            return view('agencies.edit',compact('agency','id'));
+            $customer = Customer::find($id);
+            return view('customers.edit',compact('customer','id'));
         }
         return view("welcome");
     }
