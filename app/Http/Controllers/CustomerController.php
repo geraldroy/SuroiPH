@@ -51,7 +51,8 @@ class CustomerController extends Controller
           'address_mun_city' => 'required',
           'address_province' => 'required',
           'mobile' => 'required',
-          'birthday' => 'required'
+          'birthday' => 'required',
+          'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
         Customer::create($customer);
@@ -93,26 +94,40 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $agency = Agency::find($id);
+        $customer = Customer::find($id);
         $this->validate(request(), [
             'user_id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'address' => 'required',
-            'mobile1' => 'required'
+            'name_first' => 'required',
+            'name_last' => 'required',
+            'name_middle' => 'required',
+            'address_street1' => 'required',
+            'address_barangay' => 'required',
+            'address_mun_city' => 'required',
+            'address_province' => 'required',
+            'mobile' => 'required',
+            'birthday' => 'required',
+            'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        $agency->user_id = $request->get('user_id');
-        $agency->name = $request->get('name');
-        $agency->description = $request->get('description');
-        $agency->address = $request->get('address');
-        $agency->mobile1 = $request->get('mobile1');
-        $agency->mobile2 = $request->get('mobile2');
-        $agency->landline1 = $request->get('landline1');
-        $agency->landline2 = $request->get('landline2');
-        $agency->fax = $request->get('fax');
-        $agency->save();
+        'user_id',
+        'name_last','name_first', 'name_middle', 'name_suffix',
+        'address_street1', 'address_street2', 'address_barangay', 'address_mun_city', 'address_province',
+        'mobile', 'birthday', 'photo'
+        $customer->user_id = $request->get('user_id');
+        $customer->name_first = $request->get('name_first');
+        $customer->name_last = $request->get('name_last');
+        $customer->name_middle = $request->get('name_middle');
+        $customer->name_suffix = $request->get('name_suffix');
+        $customer->address_street1 = $request->get('address_street1');
+        $customer->address_street2 = $request->get('address_street2');
+        $customer->address_barangay = $request->get('address_barangay');
+        $customer->address_mun_city = $request->get('address_mun_city');
+        $customer->address_province = $request->get('address_province');
+        $customer->mobile = $request->get('mobile');
+        $customer->birthday = $request->get('birthday');
+        $customer->photo = $request->get('photo');
+        $customer->save();
 
-        return redirect('home')->with('success','Agency Profile has been updated.');
+        return redirect('home')->with('success','Profile has been updated.');
     }
 
     /**
