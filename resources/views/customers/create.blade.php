@@ -9,58 +9,68 @@
             @csrf
             <h1 class="h1 mb-4"><strong>Just a few more steps…</strong></h1>
             <h4 class="mb-4">Basic information</h4>
+            <input id="user_id" name="user_id" type="hidden" value="{{ Auth::id() }}">
             <div class="row">
-              <div class="col-md-4">
+              <div class="col-md-3">
                 <div class="form-group">
-                  <label for="transaction-surname"><strong> Surname </strong></label>
-                  <input type="text" class="form-control" id="transaction-surname" placeholder="E.g. De La Cruz">
-                </div>
-                
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="transaction-firstname"><strong> First Name </strong></label>
-                  <input type="text" class="form-control" id="transaction-firstname" placeholder="E.g. Juan">
-                </div>
-              </div>
-              <div class="col-md-4">
-                <div class="form-group">
-                  <label for="transaction-midname"><strong>Middle Name </strong></label>
-                  <input type="text" class="form-control" id="transaction-midname" placeholder="E.g. Remedios">
+                  <label for="transaction-surname"><strong> {{ __('Last Name') }} </strong></label>
+                  <input type="text" name="name_last" class="form-control{{ $errors->has('name_last') ? ' is-invalid' : '' }}" id="name_last" placeholder="E.g. De La Cruz" required> 
+
+                    @if ($errors->has('name_last'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name_last') }}</strong>
+                        </span>
+                    @endif
                 </div>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <strong>Birthday</strong>
-                <div class="row">
-                  <div class="col-4">
-                    <input type="number" class="form-control" id="transaction-day" placeholder="Day">
-                  </div>
-                  <div class="col-4">
-                    <select class="form-control" id="transaction-month">
-                      <option selected>Month</option>
-                      <option >January</option>
-                      <option >February</option>
-                      <option >March</option>
-                      <option >April</option>
-                      <option >May</option>
-                      <option >June</option>
-                      <option >July</option>
-                      <option >August</option>
-                      <option >September</option>
-                      <option >October</option>
-                      <option >November</option>
-                      <option >December</option>
-                    </select>
-                  </div>
-                  <div class="col-4">
-                    <input type="number" class="form-control" id="transaction-year" placeholder="Year">
-                  </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="name_first"><strong> {{ __('First Name') }} </strong></label>
+                  <input type="text" name="name_first" class="form-control{{ $errors->has('name_first') ? ' is-invalid' : '' }}" id="name_first" placeholder="E.g. Juan" required>
+
+                  @if ($errors->has('name_first'))
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('name_first') }}</strong>
+                      </span>
+                  @endif
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="name_middle"><strong>{{ __('Middle Name') }} </strong></label>
+                  <input type="text" class="form-control{{ $errors->has('name_middle') ? ' is-invalid' : '' }}" id="name_middle" name="name_middle" placeholder="E.g. Remedios" required>
+
+                   @if ($errors->has('name_middle'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name_middle') }}</strong>
+                        </span>
+                    @endif
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="name_middle"><strong>{{ __('Suffix') }} </strong></label>
+                  <input type="text" class="form-control{{ $errors->has('name_suffix') ? ' is-invalid' : '' }}" id="name_suffix" name="name_suffix" placeholder="E.g. Jr">
+
+                   @if ($errors->has('name_middle'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('name_middle') }}</strong>
+                        </span>
+                    @endif
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <strong>Birthday</strong>
+                <div class="form-control-group">
+                    <input type="date" class="form-control{{ $errors->has('birthday') ? ' is-invalid' : '' }}"  id="birthday" placeholder="" required>
+                </div>
+              </div>
+
+              <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-4">
                       <strong>Sex</strong>
@@ -84,8 +94,14 @@
             <div class="row">
                 <div class="col-6">
                   <div class="form-group">
-                    <label for="transaction-mobile"><strong>Mobile Number </strong></label>
-                    <input type="text" class="form-control" id="transaction-mobile" placeholder="E.g. +63 912 345 6789">
+                    <label for="mobile"><strong>{{ __('Phone Number') }} </strong></label>
+                    <input type="text" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" id="mobile" placeholder="E.g. +63 912 345 6789" required>
+
+                    @if ($errors->has('mobile'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('mobile') }}</strong>
+                        </span>
+                    @endif
                   </div>
                 </div>
 
@@ -95,14 +111,104 @@
                     <input type="email" class="form-control" id="transaction-email" placeholder="E.g. juan.delacruz@email.com">
                   </div>
                 </div>
+            </div>
 
-                <div class="suroi-file form-group col-12">
-                  <label for="profpic-upload"><strong>Upload Profile Picture</strong></label>
-                  <input type="file" name="profpic" id="profpic-upload" class="form-control-file">
+            <hr>
+
+            <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label for="mobile"><strong>{{ __('Phone Number') }} </strong></label>
+                    <input type="text" class="form-control{{ $errors->has('mobile') ? ' is-invalid' : '' }}" id="mobile" placeholder="E.g. +63 912 345 6789" required>
+
+                    @if ($errors->has('mobile'))
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $errors->first('mobile') }}</strong>
+                        </span>
+                    @endif
+                  </div>
+                </div>
+
+                 <div class="col-6">
+                  <div class="form-group">
+                    <label for="transaction-email"><strong>Email address </strong></label>
+                    <input type="email" class="form-control" id="transaction-email" placeholder="E.g. juan.delacruz@email.com">
+                  </div>
                 </div>
             </div>
 
-            <div class="form-group row mt-5">
+            <div class="row">
+              <div class="col-12">
+                  <label for="address_street1" class="col-form-label"><strong>{{ __('Street Line 1') }}</strong></label>
+                    
+                  <input id="address_street1" type="text" name="address_street1" class="form-control{{ $errors->has('address_street1') ? ' is-invalid' : '' }}" required>
+
+                  @if ($errors->has('address_street1'))
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('address_street1') }}</strong>
+                      </span>
+                  @endif
+              </div>
+
+               <div class="col-12">
+                  <label for="address_street2" class="col-form-label"><strong>{{ __('Street Line 2') }}</strong></label>
+                    
+                  <input id="address_street2" type="text" name="address_street2" class="form-control{{ $errors->has('address_street2') ? ' is-invalid' : '' }}">
+
+                  @if ($errors->has('address_street2'))
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('address_street2') }}</strong>
+                      </span>
+                  @endif
+              </div>
+
+               <div class="col-4">
+                  <label for="address_barangay" class="col-form-label"><strong>{{ __('Barangay') }}</strong></label>
+                    
+                  <input id="address_barangay" type="text" name="address_barangay" class="form-control{{ $errors->has('address_barangay') ? ' is-invalid' : '' }}" required>
+
+                  @if ($errors->has('address_barangay'))
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('address_barangay') }}</strong>
+                      </span>
+                  @endif
+              </div>
+
+              <div class="col-4">
+                  <label for="address_mun_city" class="col-form-label"><strong>{{ __('City/Municipality') }}</strong></label>
+                    
+                  <input id="address_mun_city" type="text" name="address_mun_city" class="form-control{{ $errors->has('address_mun_city') ? ' is-invalid' : '' }}" required>
+
+                  @if ($errors->has('address_mun_city'))
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('address_mun_city') }}</strong>
+                      </span>
+                  @endif
+              </div>
+
+              <div class="col-4">
+                  <label for="address_province" class="col-form-label"><strong>{{ __('Province') }}</strong></label>
+                    
+                  <input id="address_province" type="text" name="address_province" class="form-control{{ $errors->has('address_province') ? ' is-invalid' : '' }}" required>
+
+                  @if ($errors->has('address_mun_city'))
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $errors->first('address_province') }}</strong>
+                      </span>
+                  @endif
+              </div>
+            </div>
+
+            <hr>
+
+            <div class="row py-3">
+             <div class="suroi-file form-group col-12">
+                <label for="photo"><strong>Upload Profile Picture</strong></label>
+                <input type="file" name="photo" id="photo" class="form-control-file">
+              </div>
+            </div>
+
+            <div class="form-group row mt-5 mx-0">
                 <div class="">
                     <button type="submit" class="btn btn-primary">
                         {{ __('Create Profile') }}
