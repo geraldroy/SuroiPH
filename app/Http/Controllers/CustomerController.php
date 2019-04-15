@@ -108,10 +108,6 @@ class CustomerController extends Controller
             'birthday' => 'required',
             'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        'user_id',
-        'name_last','name_first', 'name_middle', 'name_suffix',
-        'address_street1', 'address_street2', 'address_barangay', 'address_mun_city', 'address_province',
-        'mobile', 'birthday', 'photo'
         $customer->user_id = $request->get('user_id');
         $customer->name_first = $request->get('name_first');
         $customer->name_last = $request->get('name_last');
