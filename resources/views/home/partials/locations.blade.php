@@ -1,14 +1,14 @@
 	 <!-- Button trigger modal -->
-    <div class="d-flex w-100 mx-3">
+    <div class="d-flex w-100">
 
-        <form class="my-auto d-inline-flex mr-4" autocomplete="off" action="/search">
+        <form class="my-auto d-inline-flex mr-4 mx-3" autocomplete="off" action="/search">
             <input class="form-control shadow-box pl-5" name="location-search" type="search" placeholder='Search' aria-label="Search">
             <div class="position-absolute align-middle color-suroi-green suroi-landing-searchico d-flex">
               <i class="fas fa-search m-auto h6"></i>
             </div>
           </form>
 
-        <button type="button" class="btn btn-primary ml-auto pt-2 pb-1 my-auto mr-4 mr-md-0" data-toggle="modal" data-target="#createLocationModal">
+        <button type="button" class="btn btn-primary ml-auto pt-2 pb-1 my-auto mr-4 mr-md-3" data-toggle="modal" data-target="#createLocationModal">
             <i class="fas fa-plus"></i> <span class="d-none d-md-inline-block">Create New Location</span>
         </button>
     </div>
