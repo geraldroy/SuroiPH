@@ -14,6 +14,7 @@
             <a href="#" class="ml-auto p-2">Create/Edit Profile</a>
         </div>
 
+        <h1>Orders</h1>
         <div class="row">
             <table class="table table-striped">
                 <thead>
