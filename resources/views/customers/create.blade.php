@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Create Customer Profile')
 
 @section('content')
 <div class="my-5 d-flex w-100 container site-content flex-column transaction">
@@ -79,8 +80,8 @@
               <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-4">
-                      <strong>Sex</strong>
-                      <select class="form-control" id="transaction-sex">
+                      <label for="sex"><strong>Sex</strong></label>
+                      <select class="form-control" id="sex" name="sex">
                         <option selected></option>
                         <option >Male</option>
                         <option >Female</option>
@@ -88,9 +89,9 @@
                       </select>
                     </div>
                     <div class="col-md-8">
-                      <strong>Nationality</strong>
+                      <label for="nation"><strong>Nationality</strong></label>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="transaction-nation" placeholder="E.g. Filipino">
+                        <input type="text" class="form-control" name="nation" id="nation" placeholder="E.g. Filipino">
                       </div>
                     </div>
                 </div>

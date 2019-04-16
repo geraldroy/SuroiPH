@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+@section('title', 'Editing Customer Profile')
 
 @section('content')
 <div class="my-5 d-flex w-100 container site-content flex-column transaction">
@@ -7,7 +8,7 @@
     <div class="col-lg-10 mx-auto">
         <form id="basic-info" class="container-fluid" style="padding-top: 60px; width: 100% !important;" method="POST" action="{{ route('customers.store') }}" enctype="multipart/form-data">
             @csrf
-            <h1 class="h1 mb-4"><strong>Just a few more steps…</strong></h1>
+            <h1 class="h1 mb-4"><strong>Editing Profile </strong></h1>
             <h4 class="mb-4">Basic information</h4>
             <input id="user_id" name="user_id" type="hidden" value="{{ Auth::id() }}">
             <div class="row">
@@ -79,8 +80,8 @@
               <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-4">
-                      <strong>Sex</strong>
-                      <select class="form-control" id="transaction-sex">
+                      <label for="sex"><strong>Sex</strong></label>
+                      <select class="form-control" id="sex" name="sex">
                         <option selected></option>
                         <option >Male</option>
                         <option >Female</option>
@@ -88,9 +89,9 @@
                       </select>
                     </div>
                     <div class="col-md-8">
-                      <strong>Nationality</strong>
+                      <label for="nation"><strong>Nationality</strong></label>
                       <div class="form-group">
-                        <input type="text" class="form-control" id="transaction-nation" placeholder="E.g. Filipino">
+                        <input type="text" class="form-control" name="nation" id="nation" placeholder="E.g. Filipino">
                       </div>
                     </div>
                 </div>
@@ -187,10 +188,12 @@
             <hr>
 
             <div class="row py-3">
-             <div class="suroi-file form-group col-12">
-                <img src="{{ $customer->photo }}">
-                <label for="photo"><strong>Upload Profile Picture</strong></label>
-                <input type="file" name="photo" id="photo" class="form-control-file">
+            <div class="d-flex">
+              <img src="{{ $customer->photo }}" style="max-height: 120px">
+               <div class="suroi-file form-group col-12">
+                  <label for="photo"><strong>Upload Profile Picture</strong></label>
+                  <input type="file" name="photo" id="photo" class="form-control-file">
+                </div>
               </div>
             </div>
 
