@@ -11,9 +11,10 @@
 <div class="tab-content pt-4" id="nav-tabContent">
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <div class="d-flex">
-            <a href="#" class="ml-auto p-2">Create/Edit Profile</a>
+            <a href="{{ route('customers.edit',$customer->id) }}" class="ml-auto p-2">Create/Edit Profile</a>
         </div>
 
+        <h1>Orders</h1>
         <div class="row">
             <table class="table table-striped">
                 <thead>

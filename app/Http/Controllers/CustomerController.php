@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use App\Customer;
 
 class CustomerController extends Controller
@@ -55,6 +57,22 @@ class CustomerController extends Controller
           'photo.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
 
+        // Check if a profile image has been uploaded
+       if($request->has('photo')) {
+           // Get image file
+           $image = $request->file('photo');
+           // Make a image name based on user name and current timestamp
+           $name = time().'_'.str_slug($request->input('name_last')).'_'.str_slug($request->input('name_first'));
+           // Define folder path
+           $folder = '/uploads/customers/';
+           // Make a file path where image will be stored [ folder path + file name + file extension]
+           $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+           // Upload image
+           $this->uploadPhoto($image, $folder, 'public', $name);
+           // Set user profile image path in database to filePath
+           $customer['photo'] = $filePath;
+       }
+
         Customer::create($customer);
         return redirect('home')->with('success','Your profile has been created.');
     }
@@ -78,8 +96,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::check() && $id == Auth::id()) {
-            $customer = Customer::find($id);
+        $customer = Customer::find($id);
+        if (Auth::check() && $customer->user_id == Auth::id()) {
             return view('customers.edit',compact('customer','id'));
         }
         return view("welcome");
@@ -135,5 +153,12 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function uploadPhoto(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    {
+        $name = !is_null($filename) ? $filename : str_random(25);
+        $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+        return $file;
     }
 }

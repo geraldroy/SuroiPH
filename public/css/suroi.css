@@ -341,7 +341,8 @@ input:focus:-ms-input-placeholder { color:transparent !important; }
 }
 
 .suroi-footer .suroi-logo{
-	max-height: 40%;
+	height: 40%;
+	max-height: 150px;
 }
 
 .suroi-footer h1, .suroi-footer h2, .suroi-footer h3, .suroi-footer h4, .suroi-footer h5, .suroi-footer h6{
