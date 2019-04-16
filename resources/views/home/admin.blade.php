@@ -8,7 +8,7 @@
 @include('home.partials.nav_header', ['userType' => $userString] )
 
 <div class="tab-content pt-4 w-100" id="nav-tabContent">
-    
+
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         @include('home.partials.dashboard', ['userType' => $userString])
     </div>
@@ -29,7 +29,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form method="POST" action="{{ route('tags.store') }}" style="width: 100%!important;">
+                    <form method="POST" action="{{ route('tags.store') }}" style="width: 100%!important;" enctype="multipart/form-data" >
                         @csrf
                         <div class="modal-body">
 
@@ -67,7 +67,7 @@
                                 <label for="type" class="col-md-3 col-form-label text-md-right">{{ __('Parent') }}</label>
 
                                 <div class="col-md-7">
-                                    <select id="parent" name="parent" class="form-control{{ $errors->has('description') ? ' is-invalid' : '' }}" required>
+                                    <select id="parent" name="parent" class="form-control{{ $errors->has('parent') ? ' is-invalid' : '' }}" required>
                                         <option value="0">None</option>
                                         @foreach ($locations as $location)
                                         <option value="{{ $location->id }}"> {{ ucwords($location->name) }}</option>
@@ -79,6 +79,12 @@
                                             <strong>{{ $errors->first('parent') }}</strong>
                                         </span>
                                     @endif
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="type" class="col-md-3 col-form-label text-md-right">{{ __('Upload Photo') }}</label>
+                                <div class="col-md-7">
+                                       <input type="file" name="photo" id="photo" class="form-control-file">
                                 </div>
                             </div>
                         </div>
@@ -96,10 +102,10 @@
         <div class="card-columns">
             @foreach($locations as $location)
             <div class="card">
-                <img class="card-img-top" src="http://lorempixel.com/400/400/" alt="Card image cap">
+                <img class="card-img-top" src="@if($location->photo == NULL) http://lorempixel.com/400/400/ @else {{ $location->photo }} @endif" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{ ucwords($location->name) }}</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <p class="card-text">{{ $location->description }}</p>
                     <p class="card-text"><small class="text-muted">Children: <a href=#>Lorem</a>, <a href=#>Ipsum</a>, <a href=#>Lorem Ipsum</a> </small></p>
                     <a href="#" class="btn btn-success">Edit</a>
                     <a href="#" class="btn btn-danger">Delete</a>
