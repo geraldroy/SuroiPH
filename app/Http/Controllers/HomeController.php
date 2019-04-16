@@ -56,7 +56,7 @@ class HomeController extends Controller
                     -> select('transactions.id as transaction_id','packages.name as package_name', 'agencies.name as agency_name', 'packages.price as package_price', 'status as status')
                     -> get();
 
-                return view('home', compact('user','orders'));
+                return view('home', compact('user', 'customer', 'orders'));
             }
         }
         return view('welcome');

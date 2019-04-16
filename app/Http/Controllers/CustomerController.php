@@ -96,8 +96,8 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        if (Auth::check() && $id == Auth::id()) {
-            $customer = Customer::find($id);
+        $customer = Customer::find($id);
+        if (Auth::check() && $customer->user_id == Auth::id()) {
             return view('customers.edit',compact('customer','id'));
         }
         return view("welcome");
