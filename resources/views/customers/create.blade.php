@@ -5,7 +5,7 @@
 <div class="my-5 d-flex w-100 container site-content flex-column transaction">
   <div class="row w-100">
     <div class="col-lg-10 mx-auto">
-        <form id="basic-info" class="container-fluid" style="padding-top: 60px; width: 100% !important;" method="POST" action="{{ route('customers.store') }}">
+        <form id="basic-info" class="container-fluid" style="padding-top: 60px; width: 100% !important;" method="POST" action="{{ route('customers.store') }}" enctype="multipart/form-data">
             @csrf
             <h1 class="h1 mb-4"><strong>Just a few more steps…</strong></h1>
             <h4 class="mb-4">Basic information</h4>
@@ -14,7 +14,7 @@
               <div class="col-md-3">
                 <div class="form-group">
                   <label for="transaction-surname"><strong> {{ __('Last Name') }} </strong></label>
-                  <input type="text" name="name_last" class="form-control{{ $errors->has('name_last') ? ' is-invalid' : '' }}" id="name_last" placeholder="E.g. De La Cruz" required> 
+                  <input type="text" name="name_last" class="form-control{{ $errors->has('name_last') ? ' is-invalid' : '' }}" id="name_last" placeholder="E.g. De La Cruz" required>
 
                     @if ($errors->has('name_last'))
                         <span class="invalid-feedback" role="alert">
@@ -115,7 +115,7 @@
                   <div class="form-group">
                     <label for="email"><strong>Email address </strong></label>
                     <input type="email" class="form-control" name="email"
-                    id="email" placeholder="E.g. juan.delacruz@email.com" value="{{ Auth::user()->email }}">
+                    id="email" placeholder="E.g. juan.delacruz@email.com" value="{{ Auth::user()->email }}" disabled>
                   </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@
             <div class="row">
               <div class="col-12">
                   <label for="address_street1" class="col-form-label"><strong>{{ __('Street Line 1') }}</strong></label>
-                    
+
                   <input id="address_street1" type="text" name="address_street1" class="form-control{{ $errors->has('address_street1') ? ' is-invalid' : '' }}" required>
 
                   @if ($errors->has('address_street1'))
@@ -137,7 +137,7 @@
 
                <div class="col-12">
                   <label for="address_street2" class="col-form-label"><strong>{{ __('Street Line 2') }}</strong></label>
-                    
+
                   <input id="address_street2" type="text" name="address_street2" class="form-control{{ $errors->has('address_street2') ? ' is-invalid' : '' }}">
 
                   @if ($errors->has('address_street2'))
@@ -149,7 +149,7 @@
 
                <div class="col-4">
                   <label for="address_barangay" class="col-form-label"><strong>{{ __('Barangay') }}</strong></label>
-                    
+
                   <input id="address_barangay" type="text" name="address_barangay" class="form-control{{ $errors->has('address_barangay') ? ' is-invalid' : '' }}" required>
 
                   @if ($errors->has('address_barangay'))
@@ -161,7 +161,7 @@
 
               <div class="col-4">
                   <label for="address_mun_city" class="col-form-label"><strong>{{ __('City/Municipality') }}</strong></label>
-                    
+
                   <input id="address_mun_city" type="text" name="address_mun_city" class="form-control{{ $errors->has('address_mun_city') ? ' is-invalid' : '' }}" required>
 
                   @if ($errors->has('address_mun_city'))
@@ -173,7 +173,7 @@
 
               <div class="col-4">
                   <label for="address_province" class="col-form-label"><strong>{{ __('Province') }}</strong></label>
-                    
+
                   <input id="address_province" type="text" name="address_province" class="form-control{{ $errors->has('address_province') ? ' is-invalid' : '' }}" required>
 
                   @if ($errors->has('address_mun_city'))
@@ -201,7 +201,7 @@
                 </div>
             </div>
         </form>
-        
+
     </div>
   </div>
 
