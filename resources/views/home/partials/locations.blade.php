@@ -23,10 +23,7 @@
                             @while ($j < count($locations))
                             <div class="carousel-item @if ($j == 0) active @endif ">
                                 <div class="row">
-                                    @while ((($j % 4) != 0) || $j == 0)
-                                        <?php if ($j >= count($locations)){
-                                                    break;
-                                                }?>
+                                    @while (true)
                                         <div class="col-md-6 col-lg-3">
                                             <div class="card">
                                                 <div class="image-holder d-flex flex-column" style="background-image: url(@if($locations[$j]->photo == NULL)'http://lorempixel.com/400/400/'@else '{{ $locations[$j]->photo }}'@endif);">
@@ -53,7 +50,13 @@
                                             </div>
                                         </div>
 
-                                        <?php $j = $j+1;?>
+                                        <?php $j = $j+1;
+                                        
+                                        if ($j >= count($locations) || 
+                                            ($j % 4) == 0 ){
+                                            break;
+                                            //Do While Method
+                                        }?>
                                     @endwhile
                                 </div>
                             </div>
