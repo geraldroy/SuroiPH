@@ -15,6 +15,9 @@
     <div class="tab-pane fade" id="nav-locations" role="tabpanel" aria-labelledby="nav-locations-tab">
         @include('home.partials.locations', ['userType' => $userString])
     </div>
+    <div class="tab-pane fade" id="nav-activities" role="tabpanel" aria-labelledby="nav-activities-tab">
+        @include('home.partials.activities', ['userType' => $userString])
+    </div>
     <div class="tab-pane fade" id="nav-tags" role="tabpanel" aria-labelledby="nav-tags-tab">...</div>
     <div class="tab-pane fade" id="nav-agencies" role="tabpanel" aria-labelledby="nav-agencies-tab">
         <!-- Agency tab --->

@@ -1,5 +1,4 @@
-<nav>
-	
+<nav>	
      <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
                 <i class="fas fa-tachometer-alt"></i>
@@ -10,6 +9,11 @@
                 <a class="nav-item nav-link" id="nav-location-tab" data-toggle="tab" href="#nav-locations" role="tab" aria-controls="nav-locations" aria-selected="false">
                     <i class="fas fa-map-marked-alt"></i>
                     <span class="d-none d-md-inline-block"> Locations</span>
+                </a>
+
+                <a class="nav-item nav-link" id="nav-activities-tab" data-toggle="tab" href="#nav-activities" role="tab" aria-controls="nav-activities" aria-selected="false">
+                    <i class="fas fa-futbol"></i>
+                    <span class="d-none d-md-inline-block"> Activities</span>
                 </a>
 
                 <a class="nav-item nav-link" id="nav-tags-tab" data-toggle="tab" href="#nav-tags" role="tab" aria-controls="nav-tags" aria-selected="false">
