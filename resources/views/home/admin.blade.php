@@ -82,6 +82,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Customer Name</th>
                         <th style="width: 25%">Customer Name</th>
                         <th >Email Address</th>
                         <th>Transactions</th>
@@ -92,16 +93,17 @@
                     @foreach($customers as $key => $customer)
                     <tr>
                         <td>{{ $key + 1 }}</td>
+                        <td><img src="{{ $customer->photo }}" class="rounded" style="height: 100px"></td>
                         <td><a href="#">{{ $customer->lastname.', '.$customer->firstname }}</a></td>
                         <td>{{ $customer->email }}</td>
                         <td>{{ $customer->transactions_count }}</td>
-                        <td>
-                            <div class="btn-group" role="group">
-                                <a href="#" class="btn btn-success btn-sm">Edit</a>
-                                <form action="#" method="post">
+                        <td class="d-flex">
+                           <div class="btn-group mx-auto" role="group">
+                                <button class="btn btn-success btn-sm d-flex p-2" type="submit"><i class="fas fa-edit m-auto"></i></button>
+                                <form action="#" method="post" class="mx-2">
                                       @csrf
                                       @method('DELETE')
-                                      <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+                                      <button class="btn btn-danger btn-sm d-flex p-2" type="submit"><i class="fas fa-trash-alt m-auto"></i></button>
                                 </form>
                             </div>
                         </td>
