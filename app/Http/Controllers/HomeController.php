@@ -31,7 +31,7 @@ class HomeController extends Controller
                 $customers = DB::table('customers')
                     ->join('users', 'customers.user_id', '=', 'users.id')
                     ->join('transactions', 'customers.id', '=', 'transactions.customer_id', 'left outer')
-                    ->select('customers.name_first as firstname', 'customers.name_last as lastname', 'users.email as email', DB::raw('count(transactions.customer_id) as transactions_count'))
+                    ->select('customers.name_first as firstname', 'customers.name_last as lastname', 'users.email as email', 'customers.photo as photo', DB::raw('count(transactions.customer_id) as transactions_count'))
                     ->groupBy('customers.id')->get();
                 $locations = DB::table('tags')->where('type', '=', 'location')->orderBy('name')->get();
                 $activities = DB::table('tags')->where('type', '=', 'activity')->orderBy('name')->get();
