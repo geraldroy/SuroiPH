@@ -31,7 +31,8 @@ class PackageController extends Controller
             $user = User::find(Auth::id());
             if($user->type != 'customer') {
                 $agency = DB::table('agencies')->where('user_id', Auth::id())->first();
-                return view('packages.create', compact('agency'));
+                $locations = DB::table('tags')->where('type', '=', 'location')->orderBy('name')->get();
+                return view('packages.create', compact('agency', 'locations'));
             }
         }
         return redirect()->route('home');
@@ -50,8 +51,27 @@ class PackageController extends Controller
           'name' => 'required',
           'description' => 'required',
           'activities' => 'required',
-          'price' => 'required'
+          'price' => 'required',
+          'location_id' => 'required',
+          'photo1' => 'required',
+          'photo1.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'photo2.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'photo3.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'photo4.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+          'photo5.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
+
+        $photos = ['photo1', 'photo2', 'photo3', 'photo4', 'photo5'];
+        foreach ($photos as $key => $photo) {
+            if($request->hasFile($photo)) {
+                $image = $request->file($photo);
+                $name = time().'_'.str_slug($request->input('name')).'_'.$key;
+                $folder = '/uploads/packages/';
+                $filePath = $folder . $name. '.' . $image->getClientOriginalExtension();
+                $this->uploadPhoto($image, $folder, 'public', $name);
+                $package[$photo] = $filePath;
+            }
+        }
 
         Package::create($package);
         return redirect()->route('home')->with('success','Package has been created.');
@@ -138,5 +158,12 @@ class PackageController extends Controller
         $package->delete();
 
         return redirect('home')->with('success', 'Package has been deleted Successfully');
+    }
+
+    public function uploadPhoto(UploadedFile $uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    {
+        $name = !is_null($filename) ? $filename : str_random(25);
+        $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
+        return $file;
     }
 }

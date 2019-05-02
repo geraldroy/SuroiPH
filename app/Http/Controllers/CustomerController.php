@@ -58,7 +58,7 @@ class CustomerController extends Controller
         ]);
 
         // Check if a profile image has been uploaded
-       if($request->has('photo')) {
+       if($request->hasFile('photo')) {
            // Get image file
            $image = $request->file('photo');
            // Make a image name based on user name and current timestamp
