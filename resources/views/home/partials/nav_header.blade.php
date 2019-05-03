@@ -16,10 +16,11 @@
                     <span class="d-none d-md-inline-block"> Activities</span>
                 </a>
 
+                <?php /*
                 <a class="nav-item nav-link" id="nav-tags-tab" data-toggle="tab" href="#nav-tags" role="tab" aria-controls="nav-tags" aria-selected="false">
                     <i class="fas fa-tags"></i>
                     <span class="d-none d-md-inline-block"> Tags</span>
-                </a>
+                </a> */ ?>
 
                 <a class="nav-item nav-link" id="nav-agencies-tab" data-toggle="tab" href="#nav-agencies" role="tab" aria-controls="nav-agencies" aria-selected="false">
                     <i class="fas fa-luggage-cart"></i>
