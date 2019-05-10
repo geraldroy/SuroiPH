@@ -61,7 +61,8 @@ class AgencyController extends Controller
      */
     public function show($id)
     {
-        //
+        $agency = Agency::find($id);
+        return view('agencies.show', compact('agency','id'));
     }
 
     /**
