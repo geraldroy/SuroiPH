@@ -46,7 +46,8 @@ class AgencyController extends Controller
           'name' => 'required',
           'description' => 'required',
           'address' => 'required',
-          'mobile1' => 'required'
+          'mobile1' => 'required',
+          'url' => 'required'
         ]);
 
         Agency::create($agency);
@@ -62,6 +63,7 @@ class AgencyController extends Controller
     public function show($id)
     {
         $agency = Agency::find($id);
+        if($agency == null) return redirect()->route('home');
         return view('agencies.show', compact('agency','id'));
     }
 
@@ -95,7 +97,8 @@ class AgencyController extends Controller
             'name' => 'required',
             'description' => 'required',
             'address' => 'required',
-            'mobile1' => 'required'
+            'mobile1' => 'required',
+            'url' => 'required'
         ]);
         $agency->user_id = $request->get('user_id');
         $agency->name = $request->get('name');
@@ -106,6 +109,7 @@ class AgencyController extends Controller
         $agency->landline1 = $request->get('landline1');
         $agency->landline2 = $request->get('landline2');
         $agency->fax = $request->get('fax');
+        $agency->url = $request->get('url');
         $agency->save();
 
         return redirect('home')->with('success','Agency Profile has been updated.');

@@ -86,6 +86,7 @@ class PackageController extends Controller
     public function show($id)
     {
         $package = Package::find($id);
+        if($package == null) return redirect()->route('home');
         return view('packages.show', compact('package','id'));
     }
 

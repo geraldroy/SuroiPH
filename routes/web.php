@@ -28,3 +28,10 @@ Route::resources([
 ]);
 Route::get('packages/{package}/book', array('as' => 'packages.book', 'uses' => 'PackageController@book'));
 Route::get('transactions/{transaction}', array('as' => 'transactions.cancel', 'uses' => 'TransactionController@cancel'));
+
+
+Route::get('/{url}', function($url) {
+    $agency = DB::table('agencies')->where('url', $url)->first();
+    if($agency == null) return redirect()->route('home');
+    return view('agencies.show', compact('agency','id'));
+});

@@ -45,6 +45,17 @@
                                     </span>
                                 @endif
 
+
+                                <label for="name" class="col-form-label text-md-right">{{ __('Custom URL') }}</label>
+
+                               <input id="url" type="text" name="url" class="form-control{{ $errors->has('url') ? ' is-invalid' : '' }}" required>
+
+                               @if ($errors->has('url'))
+                                   <span class="invalid-feedback" role="alert">
+                                       <strong>{{ $errors->first('url') }}</strong>
+                                   </span>
+                               @endif
+
                             </div>
 
                             <div class="col-md-6 d-flex flex-column">
@@ -105,7 +116,7 @@
                                 <div>
                                     <label for="fax" class="col-form-label text-md-right">{{ __('Fax Number') }}</label>
 
-                                
+
                                     <input id="fax" type="text" name="fax" class="form-control{{ $errors->has('fax') ? ' is-invalid' : '' }}">
 
                                     @if ($errors->has('fax'))
@@ -124,7 +135,7 @@
                         </div>
                     </form>
                 </div>
-       
+
         </div>
     </div>
 </div>

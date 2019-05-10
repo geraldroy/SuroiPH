@@ -8,7 +8,7 @@ class Agency extends Model
 {
 
     protected $fillable = [
-        'user_id','name','description','address','mobile1', 'mobile2', 'landline1', 'landline2', 'fax'
+        'user_id','name','description','address','mobile1', 'mobile2', 'landline1', 'landline2', 'fax', 'url'
     ];
 
     public function user()

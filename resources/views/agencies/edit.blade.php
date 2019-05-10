@@ -57,6 +57,20 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Custom URL') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="url" type="text" name="url" class="form-control" value="{{$agency->url}}" required>
+
+                                @if ($errors->has('url'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('url') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="mobile1" class="col-md-4 col-form-label text-md-right">{{ __('Mobile Number 1') }}</label>
 
                             <div class="col-md-6">
