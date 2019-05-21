@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Transaction;
+use App\TransactionStatus;
 
 class TransactionController extends Controller
 {
@@ -35,12 +38,18 @@ class TransactionController extends Controller
      */
     public function store(Request $request)
     {
-        $transaction = $this->validate(request(), [
-          'customer_id' => 'required',
-          'package_id' => 'required'
-        ]);
+        $transaction = new Transaction();
+        $transaction->customer_id = $request->get('customer_id');
+        $transaction->package_id = $request->get('package_id');
+        $transaction->agency_id = DB::table('packages')->where('id', $request->get('package_id'))->value('agency_id');
+        $transaction->save();
 
-        Transaction::create($transaction);
+        $transaction_status = new TransactionStatus;
+        $transaction_status->transaction_id = $transaction->id;
+        $transaction_status->status = "pending";
+        $transaction_status->user_id = Auth::user()->id;
+        $transaction_status->save();
+
         return redirect()->route('home')->with('success','Thank you for booking. You may now proceed with payment.');
     }
 
@@ -104,5 +113,25 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function agencyApproval(Request $request, $id)
+    {
+        $transaction_status = new TransactionStatus;
+        $transaction_status->transaction_id = $id;
+        $transaction_status->status = $request->status;
+        $transaction_status->remarks = $request->remarks;
+        $transaction_status->user_id = Auth::user()->id;
+        $transaction_status->save();
+
+        return redirect()->route('home')->with('success','Booking has been successfully updated.');
     }
 }

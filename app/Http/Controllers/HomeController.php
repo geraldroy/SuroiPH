@@ -23,7 +23,8 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $user = User::find(Auth::id());
-            if($user->type == 'admin') { //super admin
+            //----- SUPER ADMIN ------
+            if($user->type == 'admin') {
                 $agencies = DB::table('agencies')
                     ->join('packages', 'agencies.id', '=', 'packages.agency_id')
                     ->select('agencies.name as name', 'agencies.description as description', DB::raw('count(packages.agency_id) as packages_count'))
@@ -38,15 +39,29 @@ class HomeController extends Controller
 
                 return view('home', compact('user', 'agencies', 'customers', 'locations', 'activities'));
             }
-            else if($user->type == 'agency') { //agency
+            //----- end of SUPER ADMIN ------
+
+            //----- AGENCY ------
+            else if($user->type == 'agency') {
                 $agency = Agency::where('user_id', '=', $user->id)->first();
+
                 if($agency == null) {   //create profile first
                     return redirect('agencies/create');
                 }
                 $packages = Package::where('agency_id', '=', $agency->id)->get();
-                return view('home', compact('user', 'packages'));
+                $transactions = DB::table('transactions')
+                    ->join('packages', 'transactions.package_id', '=', 'packages.id')
+                    ->join('customers', 'transactions.customer_id', '=', 'customers.id')
+                    ->where('transactions.agency_id', '=', $agency->id)
+                    ->select('transactions.id as id' ,'packages.name as package_name', 'customers.name_last as customer_name', 'packages.price as package_price')
+                    ->get();
+
+                return view('home', compact('user', 'packages', 'transactions'));
             }
-            else if($user->type == 'customer') { //customer
+            //----- end of AGENCY ------
+
+            //----- CUSTOMER ------
+            else if($user->type == 'customer') {
                 $customer = Customer::where('user_id', '=', $user->id)->first();
                 if($customer == null) {   //create profile first
                     return redirect('customers/create');
@@ -56,9 +71,9 @@ class HomeController extends Controller
                     -> join('agencies', 'packages.agency_id', '=', 'agencies.id')
                     -> select('transactions.id as transaction_id','packages.name as package_name', 'agencies.name as agency_name', 'packages.price as package_price', 'status as status')
                     -> get();
-
                 return view('home', compact('user', 'customer', 'orders'));
             }
+            //----- end of CUSTOMER ------
         }
         return view('welcome');
     }

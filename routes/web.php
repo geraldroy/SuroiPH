@@ -27,6 +27,7 @@ Route::resources([
     'tags' => 'TagController'
 ]);
 Route::get('packages/{package}/book', array('as' => 'packages.book', 'uses' => 'PackageController@book'));
+Route::post('transactions/{transaction}/agencyApproval', array('as' => 'transactions.agencyApproval', 'uses' => 'TransactionController@agencyApproval'));
 Route::get('transactions/{transaction}', array('as' => 'transactions.cancel', 'uses' => 'TransactionController@cancel'));
 
 

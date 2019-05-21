@@ -54,7 +54,52 @@
 
     </div>
     <div class="tab-pane fade" id="nav-orders" role="tabpanel" aria-labelledby="nav-porders-tab">
-        ...
+        <h1>Orders</h1>
+
+        <div class="row">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th style="width: 25%">Package Name</th>
+                        <th >Customer Name</th>
+                        <th>Price</th>
+                        <th>Status</th>
+                        <th style="width: 25%">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($transactions as $key => $transaction)
+                    <tr>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $transaction->package_name }}</td>
+                        <td>{{ $transaction->customer_name }}</td>
+                        <td>P{{ number_format($transaction->package_price, 2) }}</td>
+                        <td>status here</td>
+                        <td>
+                            <form method="POST" action="{{ action('TransactionController@agencyApproval', $transaction->id) }}" style="width: 100% !important">
+                                @csrf
+                                <label for="status" class="col-form-label text-md-right">{{ __('Status') }}</label>
+                                <select id="status" name="status" class="form-control{{ $errors->has('status') ? ' is-invalid' : '' }}" required>
+                                    <option value="bookingAccepted">Accept Booking</option>
+                                    <option value="bookingRejected">Reject Booking</option>
+                                </select>
+
+                                 <label for="remarks" class="col-form-label text-md-right">{{ __('Remarks') }}</label>
+                                 <textarea id="remarks" name="remarks" class="form-control{{ $errors->has('remarks') ? ' is-invalid' : '' }}" rows="3" required> </textarea>
+
+                                 <div class="d-flex mt-auto">
+                                     <button type="submit" class="btn btn-primary w-100 pt-2 pb-1">
+                                         <i class="fas fa-plus"></i> {{ __('Submit') }}
+                                     </button>
+                                 </div>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
 </div>
