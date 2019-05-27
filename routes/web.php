@@ -34,5 +34,6 @@ Route::get('transactions/{transaction}', array('as' => 'transactions.cancel', 'u
 Route::get('/{url}', function($url) {
     $agency = DB::table('agencies')->where('url', $url)->first();
     if($agency == null) return redirect()->route('home');
-    return view('agencies.show', compact('agency','id'));
+    $packages = DB::table('packages')->where('agency_id', $agency->id)->get();
+    return view('agencies.show', compact('agency', 'packages'));
 });
