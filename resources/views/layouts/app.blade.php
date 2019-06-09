@@ -33,13 +33,21 @@
 </head>
 <body>
     <div id="app" class="site-container">
-       
-        @include('layouts.header')
+
+        @if (Auth::check())
+            @if($user->type == 'customer')
+                @include('layouts.header', ['user' => $user, 'customer' => $customer, 'order' => $orders])
+            @else
+                @include('layouts.header', ['user' => $user])
+            @endif
+        @else
+            @include('layouts.header')
+        @endif
 
         @yield('content')
 
         @include('layouts.footer')
-  
+
     </div>
 
      <!-- Scripts -->

@@ -53,3 +53,11 @@
               </div>
           </div>
       </nav>
+
+      @if (Auth::check())
+        @if($user->type == 'customer')
+          <br><br><br><br><br><br><br>
+          <h1>{{ $customer->name_last }}</h1>
+          <h1>{{ $user->id }}</h1>
+         @endif
+      @endif
