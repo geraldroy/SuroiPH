@@ -21,7 +21,7 @@ class ComposerServiceProvider extends ServiceProvider {
     {
         if (Auth::check()) {
             $user = User::find(Auth::id());
-            
+
             if($user->type == 'customer') {
                 $customer = Customer::where('user_id', '=', $user->id)->first();
                 if($customer == null) {   //create profile first
